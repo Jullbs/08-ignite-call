@@ -3,5 +3,6 @@
     "@rocketseat/eslint-config/react",
     "next",
     "next/core-web-vitals"
-  ]
+  ],
+  "ignorePatterns": ["*.d.ts"]
 }
