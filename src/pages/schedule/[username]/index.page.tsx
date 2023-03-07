@@ -1,13 +1,13 @@
-import { prisma } from "@/lib/prisma";
-import { Avatar, Heading, Text } from "@ignite-ui/react";
-import { GetStaticPaths, GetStaticProps } from "next";
-import { ScheduleForm } from "./ScheduleForm";
-import { Container, UserHeader } from "./styles";
+import { prisma } from '@/lib/prisma'
+import { Avatar, Heading, Text } from '@ignite-ui/react'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { ScheduleForm } from './ScheduleForm'
+import { Container, UserHeader } from './styles'
 
 interface ScheduleProps {
   user: {
-    name: string,
-    bio: string,
+    name: string
+    bio: string
     avatarUrl: string
   }
 }
@@ -39,10 +39,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const user = await prisma.user.findUnique({
     where: {
       username,
-    }
+    },
   })
 
-  if(!user) {
+  if (!user) {
     return {
       notFound: true,
     }
@@ -53,9 +53,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       user: {
         name: user.name,
         bio: user.bio,
-        avatarUrl: user.avatar_url
-      }
+        avatarUrl: user.avatar_url,
+      },
     },
-    revalidate: 60 * 60 * 24, // 1 dia  
+    revalidate: 60 * 60 * 24, // 1 dia
   }
 }
