@@ -34,7 +34,7 @@ export default async function handler(
     },
     data: {
       bio,
-    }
+    },
   })
 
   return res.status(204).end()
